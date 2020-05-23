@@ -1,0 +1,58 @@
+﻿
+
+@using QuanLiThuVien.Models.Entites
+
+@{
+    ViewBag.Title = "SachMuonNhhieuTrongThang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var sachDaMuonTrongThang = (List<Sach>)ViewBag.SachDaMuonTrongThang;
+}
+
+<div class="tab-active-2 owl-carousel">
+
+    @*@{ Html.RenderAction("SachMuonNhhieuTrongThang", "StoreProc"); }*@
+
+    @foreach (var item in sachDaMuonTrongThang)
+    {
+
+        <div class="product-wrapper">
+            <div class="product-img">
+                <a href="#">
+                    <img src="~/Content/img/product/@item.ImgLink" alt="book" class="primary" />
+                </a>
+                <div class="quick-view">
+                    <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Xem ngay">
+                        <i class="fa fa-search-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="product-details text-center">
+                <div class="product-rating">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                    </ul>
+                </div>
+                <h4><a href="#">@item.Tensach</a></h4>
+            </div>
+            <div class="product-link">
+                <div class="product-button">
+                    <a href="#" title="Mượn ngay"><i class="fa fa-archive"></i>Mượn ngay</a>
+                </div>
+                <div class="add-to-link">
+                    <ul>
+                        <li><a href="#" title="Chi tiết"><i class="fa fa-external-link"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+
+
+

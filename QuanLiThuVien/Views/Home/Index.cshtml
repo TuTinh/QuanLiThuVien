@@ -1,0 +1,272 @@
+﻿
+@using QuanLiThuVien.Models.Entites
+
+@model List<Sach>
+@{
+    ViewBag.Title = "Trang chu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var newSach = (List<Sach>)ViewBag.SachMoi;
+    var sachMuonNhieu = (List<Sach>)ViewBag.SachMuonNhieu;
+    var tatCaSach = (List<Sach>)ViewBag.TatCaSach;
+}
+
+@section title{
+
+
+    <div class="single-slider pt-125 pb-130 bg-img" style="background-image:url(/Content/img/product/@Model.First().ImgLink);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="slider-content slider-animated-1 text-center">
+                        <h2>@Model.First().Tensach</h2>
+                        <h3>Bắt đầu vào ngày @Model.First().Namxuatban</h3>
+                        <a href="#">Mượn ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single-slider slider-h1-2 pt-215 pb-100 bg-img" style="background-image:url(/Content/img/product/@Model.Last().ImgLink);">
+        <div class="container">
+            <div class="slider-content slider-content-2 slider-animated-1">
+                <h2>@Model.Last().Tensach</h2>
+                <h3>Xuất bản vào ngày @Model.Last().Namxuatban</h3>
+                <a href="#">Liên hệ ngay</a>
+            </div>
+        </div>
+    </div>
+
+}
+
+<!--Top sach-->
+
+<div class="product-area pt-95 xs-mb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title text-center mb-50">
+                    <h2>TOP SÁCH PHỔ BIẾN</h2>
+                    <p>Bao gồm những quyển sách sắp về và được mượn nhiều.</p>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <!-- tab-menu-start -->
+                <div class="tab-menu mb-40 text-center">
+                    <ul>
+                        <li class="active"><a href="#sachMoi" data-toggle="tab">Sách mới</a></li>
+                        <li><a href="#sachSapVe" data-toggle="tab">Sắp về</a></li>
+                        <li><a href="#sachMuonNhieu" data-toggle="tab">Mượn nhiều</a></li>
+                    </ul>
+                </div>
+                <!-- tab-menu-end -->
+            </div>
+        </div>
+        <!-- tab-area-start -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="sachMoi">
+                <div class="tab-active owl-carousel">
+                    @foreach (var item in newSach)
+                    {
+                        <div class="product-wrapper">
+                            <div class="product-img">
+                                <a href="#">
+                                    <img src="~/Content/img/product/@item.ImgLink" alt="book" class="primary" />
+                                </a>
+                                <div class="quick-view">
+                                    <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Xem ngay">
+                                        <i class="fa fa-search-plus"></i>
+                                    </a>
+                                </div>
+                                <div class="product-flag">
+                                    <ul>
+                                        <li><span class="sale">new</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-details text-center">
+                                <div class="product-rating">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    </ul>
+                                </div>
+                                <h4><a href="#">@item.Tensach</a></h4>
+                                <div class="product-price">
+                                    <ul>
+                                        <li>...</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-link">
+                                <div class="product-button">
+                                    <a href="#"><i class="fa fa-archive"></i>Mượn thêm</a>
+                                </div>
+                                <div class="add-to-link">
+                                    <ul>
+                                        <li><a href="#" title="Chi tiết"><i class="fa fa-external-link"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="tab-pane fade" id="sachSapVe">
+                <div class="tab-active owl-carousel">
+                    @foreach (var item in newSach)
+                    {
+                        <div class="product-wrapper">
+                            <div class="product-img">
+                                <a href="#">
+                                    <img src="~/Content/img/product/@item.ImgLink" alt="book" class="primary" />
+                                </a>
+                                <div class="quick-view">
+                                    <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Xem ngay">
+                                        <i class="fa fa-search-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-details text-center">
+                                <div class="product-rating">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    </ul>
+                                </div>
+                                <h4><a href="#">@item.Tensach</a></h4>
+                                <div class="product-price">
+                                    <ul>
+                                        <li>...</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-link">
+                                <div class="product-button">
+                                    <a href="#"><i class="fa fa-archive"></i>Mượn thêm</a>
+                                </div>
+                                <div class="add-to-link">
+                                    <ul>
+                                        <li><a href="#" title="Chi tiết"><i class="fa fa-external-link"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="tab-pane fade" id="sachMuonNhieu">
+                <div class="tab-active owl-carousel">
+                    @foreach (var item in sachMuonNhieu)
+                    {
+                        <div class="product-wrapper">
+                            <div class="product-img">
+                                <a href="#">
+                                    <img src="~/Content/img/product/@item.ImgLink" alt="book" class="primary" />
+                                </a>
+                                <div class="quick-view">
+                                    <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Xem ngay">
+                                        <i class="fa fa-search-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-details text-center">
+                                <div class="product-rating">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    </ul>
+                                </div>
+                                <h4><a href="#">@item.Tensach</a></h4>
+                                <div class="product-price">
+                                    <ul>
+                                        <li>...</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-link">
+                                <div class="product-button">
+                                    <a href="#"><i class="fa fa-archive"></i>Mượn thêm</a>
+                                </div>
+                                <div class="add-to-link">
+                                    <ul>
+                                        <li><a href="#" title="Chi tiết"><i class="fa fa-external-link"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--tat ca sach-->
+<!-- new-book-area-start -->
+<div class="new-book-area pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title bt text-center pt-100 mb-30 section-title-res">
+                    <h2>Tất cả sách</h2>
+                </div>
+            </div>
+        </div>
+        <div class="tab-active owl-carousel">
+            @foreach (var item in tatCaSach)
+            {
+                <div class="product-wrapper mb-40">
+                    <div class="product-img">
+                        <a href="#">
+                            <img src="~/Content/img/product/@item.ImgLink" alt="book" class="primary" />
+                        </a>
+                        <div class="quick-view">
+                            <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Xem ngay">
+                                <i class="fa fa-search-plus"></i>
+                            </a>
+                        </div>
+                        <div class="product-flag">
+                            <ul>
+                                <li><span class="sale">new</span> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="product-details text-center">
+                        <div class="product-rating">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            </ul>
+                        </div>
+                        <h4><a href="#">@item.Tensach</a></h4>
+                    </div>
+                    <div class="product-link">
+                        <div class="product-button">
+                            <a href="#" title="Mượn thêm"><i class="fa fa-archive"></i>Mượn thêm</a>
+                        </div>
+                        <div class="add-to-link">
+                            <ul>
+                                <li><a href="#" title="Xem ngay"><i class="fa fa-external-link"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+        </div>
+    </div>
+</div>
+<!-- new-book-area-start -->
